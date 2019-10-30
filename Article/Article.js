@@ -133,7 +133,7 @@ const data = [
 
 const container = document.querySelector(".articles");
 
-data.forEach(a => {
+data.map(a => {
 	container.appendChild(
 		article(
 			a.title,
