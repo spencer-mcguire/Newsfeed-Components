@@ -101,14 +101,59 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  √ Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  √ Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+  √ Step 3: return the entire component.
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const container = document.querySelector('.articles')
+
+data.forEach(a => {
+  container.appendChild(article(a.title, a.date, a.firstParagraph, a.secondParagraph, a.thirdParagraph))
+})
+
+function article(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  // ceation of elements 
+  const card = document.createElement('div')
+  const cardTitle = document.createElement('h2')
+  const cardDate = document.createElement('p')
+  const pOne = document.createElement('p')
+  const pTwo = document.createElement('p')
+  const pThree = document.createElement('p')
+  const button = document.createElement('span')
+
+  // structure 
+  card.appendChild(cardTitle)
+  card.appendChild(cardDate)
+  card.appendChild(pOne)
+  card.appendChild(pTwo)
+  card.appendChild(pThree)
+  card.appendChild(button)
+
+  // set classes 
+  card.classList.add('article')
+  cardDate.classList.add('date')
+  button.classList.add('expandButton')
+
+  // text content 
+  cardTitle.textContent = title;
+  cardDate.textContent = date;
+  pOne.textContent = firstParagraph;
+  pTwo.textContent = secondParagraph;
+  pThree.textContent = thirdParagraph;
+  button.textContent = 'click here to expand';
+
+  // button function
+  button.addEventListener('click', () => {
+    card.classList.toggle('article-open')
+
+  })
+  return card
+}
