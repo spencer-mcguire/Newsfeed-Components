@@ -182,3 +182,4 @@ function article(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 	});
 	return card;
 }
+
